@@ -5,9 +5,9 @@ from src.predict import predict_image
 
 if __name__ == "__main__":
     dataset_path = "data/train"
-    model_path = "models/coin_classifier_resnet50_v2.keras"
+    model_path = "models/mode_acurracy87.h5"
 
-    """ # Criar geradores para treino e validação
+    # Criar geradores para treino e validação
     train_generator, validation_generator = create_generators(dataset_path)
 
     # Criar o modelo
@@ -25,14 +25,14 @@ if __name__ == "__main__":
     model.fit(
         train_generator,
         validation_data=validation_generator,
-        epochs=10,
+        epochs=5,
         steps_per_epoch=steps_per_epoch,
         validation_steps=validation_steps
     )
  
     # Salvar o modelo
     model.save(model_path)
-    print(f"Modelo salvo em: {model_path}")  """
+    print(f"Modelo salvo em: {model_path}")
 
     # Mapeamento de classes para valores
     class_map = {
@@ -44,10 +44,10 @@ if __name__ == "__main__":
     }
 
     # Diretório com as imagens para teste
-    test_dir = "data/resto/umas"
+    test_dir = "data/validation/"
 
     # Iterar sobre todas as imagens na pasta
-    for filename in os.listdir(test_dir):
+    for filename in (os.listdir(test_dir)):
         image_path = os.path.join(test_dir, filename)
         if not os.path.isfile(image_path):
             continue  # Ignorar se não for um arquivo

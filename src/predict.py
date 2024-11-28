@@ -32,7 +32,6 @@ def predict_image(image_path, model_path, class_map):
         plt.subplot(1, n, i + 1)
         plt.imshow(coins[i])
         plt.title(f'Predito: {class_map[np.argmax(preds[i])]} R$')
-        plt.axis('off')
     plt.show()
 
     return total_value

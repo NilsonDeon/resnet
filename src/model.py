@@ -5,7 +5,7 @@ from tensorflow.keras.optimizers import Adam
 
 def build_model(num_classes):
     base_model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
-    for layer in base_model.layers:
+    for layer in base_model.layers[:-20]:
         layer.trainable = True
     x = Flatten()(base_model.output)
     x = Dense(512, activation='relu')(x)
